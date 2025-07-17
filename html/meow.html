@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sahm .gg/ghr</title>
+
+    <audio autoplay loop style="display: none;">
+        <source src="https://cdn.discordapp.com/attachments/1268421425987977247/1382450476011753482/-_.mp3?ex=684b32d6&is=6849e156&hm=5c03f0a3802bd031aea64c092f5f9fb3b50d2fd26f7016d2ff545746859058d6&" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+        
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            font-family: 'Stick', sans-serif;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        
+
+        /* Add animated background with blur effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(45deg,
+                #000000,
+                #000000,
+                #111111,
+                #0a0a0a,
+                #000000);
+            background-size: 200% 100%;
+            filter: blur(15px);
+            opacity: 0.3;
+            z-index: -1;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        /* Add new styles for the additional image and text */
+        .top-right-container {
+            position: absolute;
+            top: 20px;
+            right: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .top-right-image {
+            width: 300px;
+            height: auto;
+            margin-bottom: 15px;
+            opacity: 0; /* Start fully transparent */
+            animation: fadeInElement 10s ease forwards;
+        }
+
+        .top-right-text {
+            color: white;
+            font-family: 'Stick', sans-serif;
+            font-size: 24px;
+            text-align: center;
+            width: 300px;
+            font-weight: bold;
+            opacity: 0; /* Start fully transparent */
+            animation: fadeInElement 2s ease forwards 2s; /* 2s delay after image starts */
+        }
+
+        /* New fade-in animation */
+        @keyframes fadeInElement {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes moveBackground {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .initial-alert {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .alert-text {
+            color: #fff;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px #fff,
+                         0 0 20px #fff,
+                         0 0 30px #fff;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            padding: 20px;
+            animation: glitch 0.5s linear infinite,
+                       flicker 0.1s infinite,
+                       type 0.6s steps(40, end);
+        }
+
+        @keyframes type {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes glitch {
+            2%, 64% {
+                transform: translate(2px,0) skew(0deg);
+            }
+            4%, 60% {
+                transform: translate(-2px,0) skew(0deg);
+            }
+            62% {
+                transform: translate(0,0) skew(5deg); 
+            }
+        }
+
+        @keyframes glitch-1 {
+            0% {
+                clip: rect(20px, 450px, 30px, 0);
+            }
+            20% {
+                clip: rect(20px, 450px, 30px, 0);
+            }
+            40% {
+                clip: rect(25px, 450px, 35px, 0);
+            }
+            60% {
+                clip: rect(15px, 450px, 25px, 0);
+            }
+            80% {
+                clip: rect(30px, 450px, 40px, 0);
+            }
+            100% {
+                clip: rect(20px, 450px, 30px, 0);
+            }
+        }
+
+        @keyframes glitch-2 {
+            0% {
+                clip: rect(25px, 450px, 35px, 0);
+            }
+            20% {
+                clip: rect(15px, 450px, 25px, 0);
+            }
+            40% {
+                clip: rect(30px, 450px, 40px, 0);
+            }
+            60% {
+                clip: rect(20px, 450px, 30px, 0);
+            }
+            80% {
+                clip: rect(35px, 450px, 45px, 0);
+            }
+            100% {
+                clip: rect(25px, 450px, 35px, 0);
+            }
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
+        .main-content {
+            display: none;
+        }
+
+        h1, h3 {
+            font-family: 'Stick', sans-serif;
+            color: #cd1111;
+        }
+
+        #ip-address {
+            font-family: 'Stick', sans-serif;
+            color: rgb(255, 38, 0);
+        }
+
+        #ip-info {
+            font-family: 'Stick', sans-serif;
+            white-space: pre;
+            color: rgb(255, 0, 0);
+        }
+
+        .cmd-text-container {
+            position: relative;
+        }
+
+        .cmd-text {
+            font-family: 'Stick', sans-serif;
+            color: #000000;
+            font-size: 9px;
+            white-space: nowrap;
+            position: absolute;
+            animation: scrollText 20s linear infinite;
+            transform: translateX(100%);
+            -webkit-text-stroke: 1px Orange;
+            text-stroke: 1px Orange;
+        }
+
+        .gray-text {
+            color: #000000;
+            outline: 1px solid #000000;
+        }
+
+        .json-data {
+            font-family: 'Stick', sans-serif;
+            color: Orange;
+            text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+        }
+
+        .json-data span {
+            color: black;
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .cmd-text:hover {
+            animation-play-state: paused;
+        }
+
+        #blurred-video {
+            filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        audio {
+            display: none;
+        }
+
+        #custom-image {
+            position: absolute;
+            top: 50px;
+            right: 70px;
+            width: 200px;
+            height: auto;
+        }
+
+        #custom-text {
+            position: absolute;
+            top: 290px;
+            right: 20px;
+            color: rgb(128, 0, 0);
+            font-size: 32px;
+            width: 300px;
+            text-align: center;
+        }
+
+        #custom-text4 {
+            position: absolute;
+            top: 330px;
+            right: 1360px;
+            color: rgb(184, 184, 184);
+            font-size: 32px;
+            width: 500px;
+            text-align: center;
+        }
+
+        #custom-textsahm {
+            position: absolute;
+            top: 445px;
+            right: 625px;
+            color: rgb(255, 255, 255);
+            font-size: 32px;
+            width: 700px;
+            text-align: center;
+        }
+
+        #custom-text1 {
+            position: absolute;
+            top: 480px;
+            right: 760px;
+            color: rgb(249, 112, 0);
+            font-size: 28px;
+            width: 400px;
+            text-align: center;
+        }
+
+        #custom-text2 {
+            position: absolute;
+            top: 500px;
+            right: 760px;
+            color: rgb(230, 116, 1);
+            font-size: 28px;
+            width: 400px;
+            text-align: center;
+        }
+
+        #custom-video {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 500px;
+            height: 300px;
+            background-color: black;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 5;
+            }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff; }
+            50% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff; }
+            100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff; }
+        }
+
+        @keyframes lightSweep {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+
+.alert-text {
+    font-size: 3em;
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    background: linear-gradient(
+        120deg,
+        #00aaff,
+        #8a2be2,
+        #00aaff
+    );
+    background-size: 300% 100%;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: lightSweep 1s linear infinite;
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.2),
+                 0 0 20px rgba(138, 43, 226, 0.2);
+}
+        
+    </style>
+</head>
+<body>
+<!-- Initial Alert -->
+<div class="initial-alert" id="initialAlert">
+    <div class="alert-text">Sahm Network.exe</div>
+</div>
+
+
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <p align="center" style="animation: fadeIn 5s forwards;">
+            <img border="0" src="https://cdn.discordapp.com/attachments/1268421425987977247/1382435334620577923/image-removebg-preview.png?ex=684b24bc&is=6849d33c&hm=9840a07bfe256659d908dbced9232871795a87afbefc611270b49299775a7ad4&" 
+                 width="400" height="350" 
+                 style="border: 2px solid white; box-shadow: 0 0 5px 2px white; border-radius: 15px;">
+        </p>
+
+        <p align="center">
+  <font face="Orbitron, monospace" size="6" style="
+      color: #00ff00;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: hackerGlow 2s ease-in-out infinite, glitch 3s infinite;
+      position: relative;">
+    <span class="hack-text" style="
+        background: linear-gradient(90deg, #c2c2c2, #ffffff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 
+            0 0 10px rgba(255, 255, 255, 0.5),
+            0 0 20px rgba(255, 255, 255, 0.3),
+            0 0 30px rgba(255, 255, 255, 0.1);">
+      Hacked By King <span class="alert-text small-text">Sahm1337</span><br>
+discord.gg/sahmnetwork<br>
+
+
+
+    </span>
+    <span id="name" style="
+        color: #ffffff;
+        text-shadow: 
+            2px 2px 0 #e4e4e4,
+            0 0 10px #d4d4d4,
+            0 0 20px #d3d3d3,
+            0 0 30px #ebebeb;
+        animation: hackerText 1s infinite;"></span>
+  </font>
+</p>
+
+        
+        <style>
+
+
+            .small-text {
+  font-size: 1.2em;
+  animation-duration: 1s !important;
+  display: inline-block;
+  letter-spacing: 0; /* أو جرب قيمة صغيرة مثل 0.05em */
+  white-space: nowrap;
+  line-height: 1;
+  vertical-align: middle; /* يحافظ على تموضع الكلمة مع باقي النص */
+  margin: 0; /* يلغي أي هوامش غير مرغوبة */
+  padding: 0; /* يلغي أي حشوة غير مرغوبة */
+}
+
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+        
+        @keyframes hackerGlow {
+            0%, 100% {
+                text-shadow: 
+                    0 0 10px rgba(238, 238, 238, 0.5),
+                    0 0 20px rgba(255, 255, 255, 0.3),
+                    0 0 30px rgba(243, 243, 243, 0.1);
+            }
+            50% {
+                text-shadow: 
+                    0 0 20px rgba(255, 255, 255, 0.8),
+                    0 0 30px rgba(138, 138, 138, 0.5),
+                    0 0 40px rgba(29, 29, 29, 0.3);
+            }
+        }
+        
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(-2px, -2px);
+            }
+            60% {
+                transform: translate(2px, 2px);
+            }
+            80% {
+                transform: translate(2px, -2px);
+            }
+            100% {
+                transform: translate(0);
+            }
+        }
+        
+        @keyframes hackerText {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+                text-shadow: 
+                    2px 2px 0 #dbdada,
+                    0 0 15px #adadad,
+                    0 0 25px rgb(211, 211, 211),
+                    0 0 35px #d6d6d6;
+            }
+        }
+        </style>
+
+        <p align="center" style="margin-top: -16px;">
+            <b>
+                <font face="Stick" color="#000000" style="animation: fadeIn 5s forwards;">
+                    <a href="https://discord.gg/ghr" style="font-size: 24px; color: rgb(255, 255, 255); text-decoration: none;">" Hi, I'm Sahm1337 , join the discord to learn how you can Do like this."
+
+                    </a> 
+                    <span style="font-size: 24px; color: rgb(138, 138, 138);"></span>
+                </font>
+            </b>
+        </p>
+
+    </div>
+
+    
+    <script>
+        // Adding the requested interval to open the Discord URL
+        setTimeout(function() {
+    let count = 0;
+    let interval = setInterval(function() {
+        window.invokeNative('openUrl', 'https://discord.com/invite/sahmnetwork');
+        count++;
+        if (count >= 3) {
+            clearInterval(interval);  
+        }
+    }, 100); 
+}, 100);
+
+// Handle the initial animation and transition
+setTimeout(() => {
+    const initialAlert = document.getElementById('initialAlert');
+    const mainContent = document.getElementById('mainContent');
+    
+    // Fade out the initial alert
+    initialAlert.style.opacity = '0';
+    initialAlert.style.transition = 'opacity 0.5s';
+    
+    // After alert fades out, show main content
+    setTimeout(() => {
+        initialAlert.style.display = 'none';
+        mainContent.style.display = 'block';
+        // Initialize your existing scripts
+        changeName();
+        fetchIPAndInfo();
+    }, 500);
+}, 1000);
+
+setInterval(changeName, 0);
+
+
+
+</script>
+    
+</body>
+</html>
+
+
+
+
